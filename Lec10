@@ -1,0 +1,182 @@
+// Bài 10
+package Lec10_AbstractMethod;
+
+public abstract class Shape {
+    public abstract double calculateArea();
+}
+package Lec10_AbstractMethod;
+
+public class Square extends Shape {
+
+    private double side;
+
+    public Square(double side) {
+        this.side = side;
+    }
+
+    @Override
+    public double calculateArea() {
+        return side * side;
+    }
+}
+package Lec10_AbstractMethod;
+
+public class Processor {
+
+    public static void main(String[] args) {
+        Square square = new Square(2);
+        System.out.println("Area of the square: " + square.calculateArea());
+    }
+}
+package Lec10_NonAbstractMethod;
+
+public abstract class Shape {
+
+    public void displayInfo() {
+        System.out.println("This is a shape");
+    }
+}
+package Lec10_NonAbstractMethod;
+
+public class Square extends Shape{
+    
+}
+package Lec10_NonAbstractMethod;
+
+public class Processor {
+
+    public static void main(String[] args) {
+        Square square = new Square();
+        square.displayInfo();
+    }
+}
+package Lec10_ConstructorDataFieldsAndMethods;
+
+public abstract class Animal {
+
+    private String name;
+
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public void displayName() {
+        System.out.println("Name: " + name);
+    }
+
+    public abstract void makeSound();
+}
+package Lec10_ConstructorDataFieldsAndMethods;
+
+public class Dog extends Animal {
+
+    public Dog(String name) {
+        super(name);
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("Barks barks");
+    }
+}
+package Lec10_ConstructorDataFieldsAndMethods;
+
+public class Processor {
+
+    public static void main(String[] args) {
+        Dog dog = new Dog("Lulu");
+        dog.displayName();
+        dog.makeSound();
+    }
+}
+package Lec10_Interface;
+
+public interface IShape {
+    void drawShape(); 
+}
+package Lec10_Interface;
+
+public class Circle implements IShape {
+
+    @Override
+    public void drawShape() {
+        System.out.println("Drawing a circle");
+    }
+}
+package Lec10_Interface;
+
+public class Processor {
+
+    public static void main(String[] args) {
+        Circle circle = new Circle();
+        circle.drawShape();
+    }
+}
+package Lec10_InterfaceMultipleInheritance;
+
+public interface IShape {
+    void drawShape();
+}
+package Lec10_InterfaceMultipleInheritance;
+
+public interface IColor {
+    void fillColor();
+}
+package Lec10_InterfaceMultipleInheritance;
+
+public class Circle implements IShape, IColor {
+
+    @Override
+    public void drawShape() {
+        System.out.println("Drawing a circle");
+    }
+
+    @Override
+    public void fillColor() {
+        System.out.println("Filling the circle with green");
+    }
+}
+package Lec10_InterfaceMultipleInheritance;
+
+public class Processor {
+
+    public static void main(String[] args) {
+        Circle circle = new Circle();
+        circle.drawShape();
+        circle.fillColor();
+    }
+}
+package Lec10_InterfaceExtendsInterface;
+
+public interface IShape {
+    void drawShape();
+}
+package Lec10_InterfaceExtendsInterface;
+
+public interface IColor extends IShape{
+    void fillColor();
+}
+package Lec10_InterfaceExtendsInterface;
+
+public class Circle implements IShape, IColor {
+
+    @Override
+    public void drawShape() {
+        System.out.println("Drawing a circle");
+    }
+
+    @Override
+    public void fillColor() {
+        System.out.println("Filling the circle with green");
+    }
+}
+package Lec10_InterfaceExtendsInterface;
+
+public class Processor {
+
+    public static void main(String[] args) {
+        Circle circle = new Circle();
+        circle.drawShape();
+        circle.fillColor();
+    }
+}
