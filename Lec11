@@ -1,0 +1,175 @@
+package Lec11_Encapsulation;
+
+public class Person {
+    public String name;
+    private double weight;
+    public void setWeight(double weight){
+        if(this.weight < 0){
+            System.out.println("Weight can not negative");
+        }
+        else{
+            this.weight = weight;
+        }
+    }
+}
+package Lec11_Encapsulation;
+
+public class EncapsulationExist {
+    public static void main(String[] args){
+        Person a = new Person();
+        a.name = "Trang";
+        a.setWeight(-10);
+    }
+}
+package Lec11_JavaAccessModifierTest1;
+
+public class AccessModifier {
+
+    int pvt = 1;
+    int df = 2;
+    protected int pro = 3;
+    public int pbl = 4;
+
+    public void display() {
+        System.out.println(pvt);
+        System.out.println(df);
+        System.out.println(pro);
+        System.out.println(pbl);
+    }
+}
+package Lec11_JavaAccessModifierTest1;
+
+public class AccessModifier1 extends AccessModifier{
+
+    @Override
+    public void display() {
+        System.out.println(pvt);
+        System.out.println(df);
+        System.out.println(pro);
+        System.out.println(pbl);
+    }
+}
+package Lec11_JavaAccessModifierTest1;
+
+public class AccessModifier2 {
+
+    public void display() {
+        AccessModifier object = new AccessModifier();
+        System.out.println(object.pvt);
+        System.out.println(object.df);
+        System.out.println(object.pro);
+        System.out.println(object.pbl);
+    }
+}
+package Lec11_JavaAccessModifierTest2;
+
+import Lec11_JavaAccessModifierTest1.AccessModifier;
+
+public class AccessModifier3 extends AccessModifier {
+
+    @Override
+    public void display() {
+        AccessModifier object = new AccessModifier();
+        System.out.println(object.pvt); //error
+        System.out.println(object.df); //error
+        System.out.println(pro);
+        System.out.println(object.pb);
+    }
+}
+package Lec11_JavaAccessModifierTest2;
+
+import Lec11_JavaAccessModifierTest1.AccessModifier;
+
+public class AccessModifier4 {
+
+    public void display() {
+        AccessModifier object = new AccessModifier();
+        System.out.println(object.pvt); //error
+        System.out.println(object.df); //error
+        System.out.println(object.pro); //error
+        System.out.println(object.pbl);
+    }
+}
+package Lec11_staticVariable;
+
+public class Person {
+
+    private String name;
+    private static int count = 0;
+
+    public Person(String n) {
+        name = n;
+        count++;
+        System.out.println(count);
+    }
+
+    public static void main(String[] args) {
+        Person p1 = new Person("Trang");
+        Person p2 = new Person("Duong");
+        Person p3 = new Person("Luong");
+    }
+}
+package Lec11_staticMethod;
+
+class Student {
+    int rollno;
+    String name;
+    static String college = "DTU";
+    
+    static void change(){
+        college = "BBDIT";
+    }
+    
+    Student(int r, String n){rollno = r; name = n;}
+    
+    void display(){System.out.println(rollno + " " + name + " " + college);}
+    
+    public static void main(String args[]){
+        Student.change();
+        
+        Student s1 = new Student(111, "Trang");
+        Student s2 = new Student(222, "Duong");
+        
+        s1.display();
+        s2.display();
+    }
+}
+package Lec11_finalVariable;
+
+public class Bike {
+    final int speedlimit = 90;
+    
+    void run(){
+        speedlimit = 400;
+    }
+    
+    public static void main(String args[]){
+        Bike obj = new Bike();
+        obj.run();
+    }
+}package Lec11_finalMethod;
+
+class Bike {
+    final void run(){System.out.println("Running");}
+}
+class Honda extends Bike{
+    void run(){System.out.println("running safely with 100kmph");}
+    
+    public static void main(String args[]){
+        Honda honda = new Honda();
+        honda.run();
+    }
+}
+package Lec11_finalClass;
+
+final class Bike {
+    void run(){System.out.println("Running");}
+}
+class Honda extends Bike{
+    void run(){System.out.println("running safely with 100kmph");}
+    
+    public static void main(String args[]){
+        Honda honda = new Honda();
+        honda.run();
+    }
+}
