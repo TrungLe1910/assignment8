@@ -1,0 +1,353 @@
+// Bài 9
+package Lec9_SuperKeywordInstanceVariable;
+
+class Dog {
+
+    int price = 1000;
+}
+package Lec9_SuperKeywordInstanceVariable;
+
+class Husky extends Dog {
+
+    int price = 1500;
+
+    void displayPrice() {
+        System.out.println("Dog's price: " + super.price);
+        System.out.println("Husky's price: " + price);
+    }
+}
+package Lec9_SuperKeywordInstanceVariable;
+
+class Processor {
+    public static void main(String[] args){
+        Husky husky = new Husky();
+        husky.displayPrice();
+    }
+}
+package Lec9_SuperKeywordConstuctor;
+
+class Dog {
+
+    Dog() {
+        System.out.println("Dog's constructor is invoked");
+    }
+}
+package Lec9_SuperKeywordConstuctor;
+
+class Husky extends Dog {
+
+    Husky() {
+        super();
+        System.out.println("Husky's constructor is invoked");
+    }
+}
+package Lec9_SuperKeywordConstuctor;
+
+class Processor {
+
+    public static void main(String[] args) {
+        Husky husky = new Husky();
+    }
+}
+package Lec9_SuperKeywordSuperclass;
+
+class Dog {
+
+    void displayPrice() {
+        System.out.println("Dog's price is 1000 USD");
+    }
+}
+package Lec9_SuperKeywordSuperclass;
+
+class Husky extends Dog {
+
+    void displayInformation() {
+        super.displayPrice(); // invoke superclass's method
+        System.out.println("Husky's price is 1500 USD");
+    }
+}
+package Lec9_SuperKeywordSuperclass;
+
+class Processor {
+
+    public static void main(String[] args) {
+        Husky husky = new Husky();
+        husky.displayInformation();
+    }
+}
+package Lec9_SuperKeywordMethodOverriding;
+
+class Animal {
+
+    void makeSound() {
+        System.out.println("Make a sound");
+    }
+}
+package Lec9_SuperKeywordMethodOverriding;
+
+public class Cat extends Animal {
+
+    @Override
+    void makeSound() {
+        System.out.println("Meows meows");
+    }
+}
+package Lec9_SuperKeywordMethodOverriding;
+
+class Processor {
+
+    public static void main(String[] args) {
+        Cat cat = new Cat();
+        cat.makeSound();
+    }
+}
+package Lec9_RuntimePolymorphism;
+
+class Animal {
+
+    void makeSound() {
+        System.out.println("Make a sound");
+    }
+}
+package Lec9_RuntimePolymorphism;
+
+class Dog extends Animal {
+
+    @Override
+    void makeSound() {
+        System.out.println("Barks barks");
+    }
+}
+package Lec9_RuntimePolymorphism;
+
+class Cat extends Animal {
+
+    @Override
+    void makeSound() {
+        System.out.println("Meows meows");
+    }
+}
+package Lec9_RuntimePolymorphism;
+
+public class PolymorphismExample {
+
+    public static void main(String[] args) {
+        Animal animal = new Animal();
+        animal.makeSound();
+        Dog dog = new Dog();
+        dog.makeSound();
+        Cat cat = new Cat();
+        cat.makeSound();
+    }
+}
+package Lec9_Upcasting;
+
+class Animal {
+
+    void makeSound() {
+        System.out.println("make a sound");
+    }
+}
+package Lec9_Upcasting;
+
+class Dog extends Animal {
+
+    @Override
+    void makeSound() {
+        System.out.println("Barks Barks");
+    }
+}
+package Lec9_Upcasting;
+
+class Cat extends Animal {
+
+    @Override
+    void makeSound() {
+        System.out.println("Meo meo");
+    }
+}
+package Lec9_Upcasting;
+
+public class PolymorphismExample {
+
+    public static void main(String[] args) {
+        Animal[] animals = new Animal[3];
+        animals[0] = new Dog();
+        animals[1] = new Cat();
+        animals[2] = new Dog();
+        for (int i = 0; i < 3; i++) {
+            animals[i].makeSound();
+        }
+    }
+}
+package Lec9_InstanceOf;
+
+class Animal {
+
+    void makeSound() {
+        System.out.println("make a sound");
+    }
+}
+package Lec9_InstanceOf;
+
+class Dog extends Animal {
+
+    @Override
+    void makeSound() {
+        System.out.println("Barks Barks");
+    }
+}
+package Lec9_InstanceOf;
+
+class Cat extends Animal {
+
+    @Override
+    void makeSound() {
+        System.out.println("Meo meo");
+    }
+}
+package Lec9_InstanceOf;
+
+import java.util.ArrayList;
+
+public class Processor {
+
+    public static void main(String[] args) {
+        ArrayList<Animal> animals = new ArrayList<>();
+        animals.add(new Cat());
+        animals.add(new Dog());
+        animals.add(new Cat());
+        int dogCount = 0, catCount = 0;
+        for (Animal animal : animals) {
+            if (animal instanceof Dog) {
+                dogCount++;
+            } else if (animal instanceof Cat) {
+                catCount++;
+            }
+        }
+        System.out.println("cat: " + catCount + "\ndog: " + dogCount);
+    }
+}
+package Lec9_RuntimePolymorphismWithDataMember;
+
+class Animal {
+
+    void makeSound() {
+        System.out.println("Make a sound");
+    }
+    String source = "VietNam";
+}
+package Lec9_RuntimePolymorphismWithDataMember;
+
+class Dog extends Animal {
+
+    @Override
+    void makeSound() {
+        System.out.println("Barks barks");
+    }
+    String source = "DaNang city";
+}
+package Lec9_RuntimePolymorphismWithDataMember;
+
+public class PolymorphismExample {
+
+    public static void main(String[] args) {
+        Animal animal = new Dog();
+        animal.makeSound(); //invoke method overriding
+        System.out.println("Source: " + animal.source);
+    }
+}
+package Lec9_Aggregation;
+
+public class Author {
+
+    private String authorID;
+    private String name;
+
+    public Author(String authorID, String name) {
+        this.authorID = authorID;
+        this.name = name;
+    }
+
+    public Author() {
+    }
+
+    public String getAuthorID() {
+        return authorID;
+    }
+
+    public void setAuthorID(String authorID) {
+        this.authorID = authorID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" + "authorID ='" +authorID + '\''+ ", name='" + name + '\'' + '}';
+    }
+}
+package Lec9_Aggregation;
+
+public class Book {
+
+    private String BookID;
+    private String title;
+    private Author author;
+
+    public Book(String BookID, String title, Author author) {
+        this.BookID = BookID;
+        this.title = title;
+        this.author = author;
+    }
+
+    public Book() {
+    }
+
+    public String getID() {
+        return BookID;
+    }
+
+    public void setID(String ID) {
+        this.BookID = BookID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" + "BookID='" + BookID + '\''
+                + ", title='" + title + '\''
+                + ", author=" + author + '}';
+    }
+}
+package Lec9_Aggregation;
+
+public class Processor {
+
+    public static void main(String[] args) {
+        Author author = new Author("101", "Napoleon Hill");
+        Book book = new Book("1", "Think And Grow Rich", author);
+        System.out.println("Book information: " + book);
+    }
+}
