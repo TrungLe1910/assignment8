@@ -1,0 +1,137 @@
+// Bài 8
+package Lec8_Constructor;
+
+public class Student {
+    int id;
+    String name;
+    
+    void display(){System.out.println(id + " " + name);}
+    
+    public static void main(String args[]){
+        Student s1 = new Student();
+        Student s2 = new Student();
+        s1.display();
+        s2.display();
+    }
+}
+package Lec8_Constructor;
+
+public class Student1 {
+    int id;
+    String name;
+    
+    Student1(int i, String n){
+        id = i;
+        name = n;
+    }
+    void display(){System.out.println(id + " " + name);}
+    
+    public static void main(String args[]){
+        Student1 s1 = new Student1(111, "Karan");
+        Student1 s2 = new Student1(222, "Aryan");
+        s1.display();
+        s2.display();
+    }
+}
+package Lec8_NumberOfParameters;
+
+public class OverLoadingExample {
+
+    public static int add(int a, int b) {
+        return a + b;
+    }
+
+    public static int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+package Lec8_NumberOfParameters;
+
+public class Processor {
+
+    public static void main(String[] args) {
+        System.out.println(OverLoadingExample.add(1, 2));
+        System.out.println(OverLoadingExample.add(1, 2, 3));
+    }
+}
+package Lec8_DataTypeOfParameters;
+
+public class OverLoadingExample2 {
+
+    public static int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public static double multiply(double a, double b) {
+        return a * b;
+    }
+}
+package Lec8_DataTypeOfParameters;
+
+public class Processor {
+
+    public static void main(String[] args) {
+        System.out.println(OverLoadingExample2.multiply(1, 2));
+    }
+}
+package Lec8_OrderOfParameters;
+
+public class OverLoadingExample3 {
+
+    public static void printInfo(String name, int age) {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+
+    public static void printInfo(int age, String name) {
+        System.out.println("Age: " + age + ", Name: " + name);
+    }
+}
+package Lec8_OrderOfParameters;
+
+public class Processor {
+
+    public static void main(String[] args) {
+        OverLoadingExample3.printInfo("Trung",18);
+    }
+}
+package Lec8_thisKeywordConstructor;
+
+public class Student {
+    int id;
+    String name;
+    
+    Student(){System.out.println("default constructor is invoked");}
+    
+    Student(int id, String name){
+        this();
+        this.id = id;
+        this.name = name;
+    }
+    void display(){System.out.println(id + " " + name);}
+    
+    public static void main(String args[]){
+        Student s1 = new Student(111, "Karan");
+        Student s2 = new Student(222, "Aryan");
+        s1.display();
+        s2.display();
+    }
+}
+package Lec8_thisKeywordInstanceVariable;
+
+public class Student {
+    int id;
+    String name;
+    
+    Student(int id, String name){
+        this.id = id;
+        this.name = name;
+    }
+    void display(){System.out.println(id + " " + name);}
+    
+    public static void main(String args[]){
+        Student s1 = new Student(111, "Karan");
+        Student s2 = new Student(222, "Aryan");
+        s1.display();
+        s2.display();
+    }
+}
